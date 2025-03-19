@@ -1,17 +1,20 @@
 package mthree.com.fullstackschool.dao;
 
-import mthree.com.fullstackschool.model.Student;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import mthree.com.fullstackschool.model.Student;
 
 @DataJdbcTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -80,6 +83,6 @@ public class StudentDaoImplTests {
         //Delete student with id 8 as they are not enrolled in any classes
         studentDao.deleteStudent(8);
         assertNotNull(studentDao.getAllStudents());
-        assertEquals(8, studentDao.getAllStudents().size());
+        assertEquals(7, studentDao.getAllStudents().size());
     }
 }

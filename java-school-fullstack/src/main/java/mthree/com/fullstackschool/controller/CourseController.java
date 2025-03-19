@@ -1,10 +1,20 @@
 package mthree.com.fullstackschool.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import mthree.com.fullstackschool.model.Course;
 import mthree.com.fullstackschool.service.CourseServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
 @RequestMapping("/course")
@@ -17,9 +27,7 @@ public class CourseController {
     @GetMapping("/courses")
     public List<Course> getAllCourses() {
         //YOUR CODE STARTS HERE
-
-        return null;
-
+        return courseService.getAllCourses();
         //YOUR CODE ENDS HERE
     }
 
@@ -27,7 +35,7 @@ public class CourseController {
     public Course getCourseById(@PathVariable int id) {
         //YOUR CODE STARTS HERE
 
-        return null;
+        return courseService.getCourseById(id);
 
         //YOUR CODE ENDS HERE
     }
@@ -36,7 +44,7 @@ public class CourseController {
     public Course addCourse(@RequestBody Course course) {
         //YOUR CODE STARTS HERE
 
-        return null;
+        return courseService.addNewCourse(course);
 
         //YOUR CODE ENDS HERE
     }
@@ -45,7 +53,7 @@ public class CourseController {
     public Course updateCourse(@PathVariable int id, @RequestBody Course course) {
         //YOUR CODE STARTS HERE
 
-        return null;
+        return courseService.updateCourseData(id, course);
 
         //YOUR CODE ENDS HERE
     }
@@ -54,7 +62,7 @@ public class CourseController {
     public void deleteCourse(@PathVariable int id) {
         //YOUR CODE STARTS HERE
 
-
+        courseService.deleteCourseById(id);
 
         //YOUR CODE ENDS HERE
     }
