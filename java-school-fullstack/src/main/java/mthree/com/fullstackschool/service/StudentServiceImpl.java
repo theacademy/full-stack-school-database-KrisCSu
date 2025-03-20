@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import mthree.com.fullstackschool.dao.CourseDao;
 import mthree.com.fullstackschool.dao.StudentDao;
 import mthree.com.fullstackschool.model.Student;
 
@@ -13,7 +14,7 @@ public class StudentServiceImpl implements StudentServiceInterface {
 
     //YOUR CODE STARTS HERE
     private final StudentDao studentDao;
-    private CourseServiceImpl courseService;
+    private CourseDao courseDao;
 
     public StudentServiceImpl(StudentDao studentDao){ 
         this.studentDao = studentDao;
@@ -73,7 +74,7 @@ public class StudentServiceImpl implements StudentServiceInterface {
         //YOUR CODE STARTS HERE
         if(studentDao.findStudentById(studentId).getStudentFirstName().equals("Student Not Found")) { 
             System.out.println("Student not found");
-        } else if(courseService.getCourseById(courseId).getCourseName().equals("Course Not Found")) {
+        } else if(courseDao.findCourseById(courseId).getCourseName().equals("Course Not Found")) {
             System.out.println("Course not found");
         } else{ 
             studentDao.deleteStudentFromCourse(studentId, courseId);
@@ -87,7 +88,7 @@ public class StudentServiceImpl implements StudentServiceInterface {
         try {
             if(studentDao.findStudentById(studentId).getStudentFirstName().equals("Student Not Found")) { 
                 System.out.println("Student Not Found");
-            } else if(courseService.getCourseById(courseId).getCourseName().equals("Course Not Found")) {
+            } else if(courseDao.findCourseById(courseId).getCourseName().equals("Course Not Found")) {
                 System.out.println("Course not found");
             } else {
                 studentDao.addStudentToCourse(studentId, courseId);
